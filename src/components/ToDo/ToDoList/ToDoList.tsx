@@ -10,6 +10,7 @@ const ToDoList = (props) => {
       {todoList.map((item) => (
         <ToDoItem
           key={item.id}
+          id={item.id}
           title={item.title}
           description={item.description}
           done={item.done}

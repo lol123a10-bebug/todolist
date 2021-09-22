@@ -1,12 +1,19 @@
+import { useAppDispatch } from "../../../hooks/useApp";
+import { todoActions } from "../../../store/slices/ToDoSlice";
 import Button from "../../UI/Button/Button";
 import classes from "./ToDoItem.module.scss";
 
 const ToDoItem = (props) => {
-  const { title, description, done } = props;
+  const { id, title, description, done } = props;
+  const dispatch = useAppDispatch();
 
   const modifiedClassNames = done
     ? [classes.ToDoItem, classes.done].join(" ")
     : classes.ToDoItem;
+
+  const doneButtonHandler = () => {
+    dispatch(todoActions.toggleDoneOfListItem({ id }));
+  };
 
   return (
     <li className={modifiedClassNames}>
@@ -17,7 +24,7 @@ const ToDoItem = (props) => {
       <div className={classes.ToDoItem__buttons}>
         <Button>Remove</Button>
         <Button>Edit</Button>
-        <Button>Done</Button>
+        <Button onClick={doneButtonHandler}>{done ? "Done" : "Undone"}</Button>
       </div>
     </li>
   );

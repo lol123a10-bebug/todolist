@@ -1,12 +1,17 @@
 import { nanoid } from "@reduxjs/toolkit";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const useInput = (validationFn = (val) => val, classes: any = []) => {
   const id = useMemo(() => nanoid(), []);
   const [value, setValue] = useState("");
   const [isTouched, setIsTouched] = useState(false);
+  const [isValid, setIsValid] = useState(false);
 
-  const isValid = validationFn(value);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsValid(validationFn(value)), 300);
+    return () => clearTimeout(timer);
+  }, [validationFn, value]);
+
   const hasError = isTouched && !isValid;
 
   const changeHandler = (e) => {

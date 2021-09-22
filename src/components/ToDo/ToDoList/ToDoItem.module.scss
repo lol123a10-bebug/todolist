@@ -6,6 +6,11 @@
   border-radius: var(--border-radius);
   &.done {
     background-color: salmon;
+    & h2,
+    & p,
+    & button {
+      text-decoration: line-through;
+    }
   }
   &__header {
     padding-bottom: 3rem;
