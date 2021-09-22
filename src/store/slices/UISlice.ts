@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   todoCreateIsVisible: false,
+  isLoading: false,
 };
 
 const UISlice = createSlice({
@@ -10,6 +11,9 @@ const UISlice = createSlice({
   reducers: {
     toDoCreateToggle(state) {
       state.todoCreateIsVisible = !state.todoCreateIsVisible;
+    },
+    setLoading(state, action) {
+      state.isLoading = action.payload;
     },
   },
 });

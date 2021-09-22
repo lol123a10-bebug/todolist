@@ -15,6 +15,10 @@ const ToDoItem = (props) => {
     dispatch(todoActions.toggleDoneOfListItem({ id }));
   };
 
+  const removeButtonHandler = () => {
+    dispatch(todoActions.removeItemFromList({ id }));
+  };
+
   return (
     <li className={modifiedClassNames}>
       <div className={classes.ToDoItem__header}>
@@ -22,7 +26,7 @@ const ToDoItem = (props) => {
         <p>{description}</p>
       </div>
       <div className={classes.ToDoItem__buttons}>
-        <Button>Remove</Button>
+        <Button onClick={removeButtonHandler}>Remove</Button>
         <Button>Edit</Button>
         <Button onClick={doneButtonHandler}>{done ? "Done" : "Undone"}</Button>
       </div>

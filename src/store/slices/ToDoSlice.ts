@@ -21,6 +21,11 @@ const ToDoSlice = createSlice({
       const item = state.todoList[itemIndex];
       item.done = !item.done;
     },
+    removeItemFromList(state, action) {
+      const { id } = action.payload;
+      const itemIndex = state.todoList.findIndex((item) => item.id === id);
+      state.todoList.splice(itemIndex, 1);
+    },
   },
 });
 

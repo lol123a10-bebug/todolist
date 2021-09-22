@@ -2,6 +2,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch } from "../../../hooks/useApp";
 import useInput from "../../../hooks/useInput";
 import { todoActions } from "../../../store/slices/ToDoSlice";
+import { UIActions } from "../../../store/slices/UISlice";
 import Button from "../../UI/Button/Button";
 import classes from "./ToDoCreate.module.scss";
 
@@ -29,6 +30,10 @@ const ToDoCreate = (props) => {
     isValid: descriptionIsValid,
   } = useInput(validateText, classes);
 
+  const cancelTODOAddForm = () => {
+    dispatch(UIActions.toDoCreateToggle());
+  };
+
   const formIsValid = titleIsValid && descriptionIsValid;
 
   const submitFormHandler = (e) => {
@@ -47,6 +52,7 @@ const ToDoCreate = (props) => {
       })
     );
 
+    cancelTODOAddForm();
     titleReset();
     descriptionReset();
   };
@@ -75,7 +81,7 @@ const ToDoCreate = (props) => {
           />
         </div>
         <div className={classes.Form__buttons}>
-          <Button>Cancel</Button>
+          <Button onClick={cancelTODOAddForm}>Cancel</Button>
           <Button type="submit" disabled={!formIsValid}>
             Accept
           </Button>

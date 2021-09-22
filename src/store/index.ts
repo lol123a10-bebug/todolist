@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import ToDoReducer from "./slices/ToDoSlice";
+import UIReducer from "./slices/UISlice";
 
 const store = configureStore({
   reducer: {
     todo: ToDoReducer,
+    ui: UIReducer,
   },
 });
 

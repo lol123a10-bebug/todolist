@@ -1,5 +1,8 @@
 .ToDoItem {
-  max-width: 30rem;
+  max-width: 20rem;
+  @media (min-width: 40rem) {
+    max-width: 30rem;
+  }
   margin: auto;
   background-color: #fff;
   padding: 2rem;
