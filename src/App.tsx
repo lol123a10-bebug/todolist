@@ -10,6 +10,10 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(getList());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (isInitial) {
       isInitial = false;
       return;
@@ -18,10 +22,6 @@ const App = () => {
     const timer = setTimeout(() => dispatch(putList(todoList)), 300);
     return () => clearTimeout(timer);
   }, [dispatch, todoList]);
-
-  useEffect(() => {
-    dispatch(getList());
-  }, [dispatch]);
 
   return (
     <div>
