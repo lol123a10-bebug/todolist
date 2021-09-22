@@ -1,0 +1,7 @@
+.ToDoList {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  padding-top: 5rem;
+  grid-row-gap: 2rem;
+}

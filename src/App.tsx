@@ -1,5 +1,11 @@
+import ToDo from "./pages/ToDo/ToDo";
+
 const App = () => {
-  return <div></div>
-}
+  return (
+    <div>
+      <ToDo />
+    </div>
+  );
+};
 
 export default App;

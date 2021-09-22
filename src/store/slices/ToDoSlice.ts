@@ -1,13 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  todoList: "",
+  todoList: [],
 };
 
 const ToDoSlice = createSlice({
   name: "todo",
   initialState,
-  reducers: {},
+  reducers: {
+    addItemToList(state, action) {
+      state.todoList = [action.payload, ...state.todoList];
+    },
+  },
 });
 
 const { reducer, actions } = ToDoSlice;
