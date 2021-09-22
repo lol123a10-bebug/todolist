@@ -1,0 +1,18 @@
+:root {
+  $border-radius: 5px;
+  $main-color: #292929;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-color);
+}
