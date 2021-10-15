@@ -3,15 +3,18 @@ import ListToDo from "../../components/ToDo/ToDoList/ToDoList";
 import Button from "../../components/UI/Button/Button";
 import { useAppDispatch, useAppSelector } from "../../hooks/useApp";
 import { UIActions } from "../../store/slices/UISlice";
+import Loading from "../../components/UI/Loading/Loading";
 
 const ToDo = (props) => {
+  const dispatch = useAppDispatch();
+
   const { todoCreateIsVisible, isLoading } = useAppSelector(
     (state) => state.ui
   );
-  const dispatch = useAppDispatch();
+  const { toDoCreateToggle } = UIActions;
 
   const addTODOButtonHandler = () => {
-    dispatch(UIActions.toDoCreateToggle());
+    dispatch(toDoCreateToggle());
   };
 
   return (
@@ -25,7 +28,7 @@ const ToDo = (props) => {
         </Button>
       )}
       {todoCreateIsVisible && <CreateToDo />}
-      {isLoading ? <p>Loading...</p> : <ListToDo />}
+      {isLoading ? <Loading /> : <ListToDo />}
     </div>
   );
 };
