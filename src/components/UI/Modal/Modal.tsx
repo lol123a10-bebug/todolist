@@ -9,7 +9,7 @@ const moveModal = (props) => {
   return createPortal(
     <div style={{ ...style }} className={clsx(classes.Modal, props.className)}>
       <Backdrop clicked={onBackdropClick} />
-      {children}
+      <div className={classes.Modal__children}>{children}</div>
     </div>,
     document.getElementById("root")
   );
