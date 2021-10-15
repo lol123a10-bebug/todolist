@@ -1,0 +1,33 @@
+.ToDoItem {
+  max-width: 20rem;
+  @media (min-width: 40rem) {
+    max-width: 30rem;
+  }
+  margin: auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  &.done {
+    background-color: salmon;
+    & h2,
+    & p,
+    & button {
+      text-decoration: line-through;
+    }
+  }
+  &__header {
+    padding-bottom: 3rem;
+    & h2 {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    & button {
+      margin: 0 0.5rem;
+      padding: 0.5rem 0;
+    }
+  }
+}

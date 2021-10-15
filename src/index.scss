@@ -1,6 +1,6 @@
 :root {
-  $border-radius: 5px;
-  $main-color: #292929;
+  --border-radius: 5px;
+  --main-color: #292929;
 }
 
 *,
@@ -15,4 +15,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--main-color);
+}
+
+input {
+  border: 1px solid transparent;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
 }

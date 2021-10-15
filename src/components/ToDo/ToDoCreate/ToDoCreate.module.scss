@@ -1,0 +1,49 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+  margin: auto;
+  padding: 2rem 1.5rem;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  @media (min-width: 40rem) {
+    padding: 2rem 5rem;
+  }
+  &__control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.6rem 0;
+    & label {
+      max-width: 10rem;
+      width: 100%;
+    }
+    & input {
+      border: 1px solid #ccc;
+      padding: 0.5rem 0.5rem;
+      width: 100%;
+      border-radius: var(--border-radius);
+      transition: 0.2s ease-in-out;
+    }
+    &.error {
+      & label {
+        color: red;
+      }
+      & input {
+        background-color: salmon;
+        border-color: red;
+      }
+    }
+  }
+  &__wrapper {
+    padding-top: 5rem;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+    & button {
+      margin: 0 1.2rem;
+    }
+  }
+}

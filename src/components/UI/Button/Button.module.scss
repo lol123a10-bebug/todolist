@@ -1,0 +1,17 @@
+.Button {
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background-color: #d1d1d1;
+  color: var(--main-color);
+  min-width: 7rem;
+  padding: 0.8rem 0;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background-color: #bbb;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #eee;
+  }
+}
