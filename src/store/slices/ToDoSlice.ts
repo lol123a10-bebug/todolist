@@ -8,23 +8,32 @@ const ToDoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    replaceTodoList(state, action) {
+    replaceTodoList: (state, action) => {
       state.todoList = action.payload;
     },
-    addItemToList(state, action) {
+
+    addItemToList: (state, action) => {
       state.todoList = [action.payload, ...state.todoList];
     },
-    toggleDoneOfListItem(state, action) {
+
+    toggleDoneOfListItem: (state, action) => {
       const { id } = action.payload;
       const itemIndex = state.todoList.findIndex((item) => item.id === id);
 
       const item = state.todoList[itemIndex];
       item.done = !item.done;
     },
-    removeItemFromList(state, action) {
+
+    removeItemFromList: (state, action) => {
       const { id } = action.payload;
       const itemIndex = state.todoList.findIndex((item) => item.id === id);
       state.todoList.splice(itemIndex, 1);
+    },
+
+    setItem: (state, action) => {
+      const { id } = action.payload;
+      const itemIndex = state.todoList.findIndex((item) => item.id === id);
+      state.todoList[itemIndex] = action.payload;
     },
   },
 });

@@ -4,13 +4,13 @@ import Backdrop from "../Backdrop/Backdrop";
 import { createPortal } from "react-dom";
 
 const moveModal = (props) => {
-  const { children } = props;
+  const { children, style, onBackdropClick } = props;
 
   return createPortal(
-    <>
-      <Backdrop />
-      <div className={clsx(classes.Modal, props.className)}>{children}</div>
-    </>,
+    <div style={{ ...style }} className={clsx(classes.Modal, props.className)}>
+      <Backdrop clicked={onBackdropClick} />
+      {children}
+    </div>,
     document.getElementById("root")
   );
 };
