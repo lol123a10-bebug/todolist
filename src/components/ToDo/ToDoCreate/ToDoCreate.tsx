@@ -1,4 +1,5 @@
 import { nanoid } from "@reduxjs/toolkit";
+import { FormEvent } from "react";
 import { useAppDispatch } from "../../../hooks/useApp";
 import useInput from "../../../hooks/useInput";
 import { todoActions } from "../../../store/slices/ToDoSlice";
@@ -6,9 +7,9 @@ import { UIActions } from "../../../store/slices/UISlice";
 import Button from "../../UI/Button/Button";
 import classes from "./ToDoCreate.module.scss";
 
-const validateText = (val) => val.trim() && val.length > 5;
+const validateText = (val: string) => val.trim() && val.length > 5;
 
-const ToDoCreate = (props) => {
+const ToDoCreate = (props: any) => {
   const dispatch = useAppDispatch();
   const {
     value: titleValue,
@@ -36,8 +37,8 @@ const ToDoCreate = (props) => {
 
   const formIsValid = titleIsValid && descriptionIsValid;
 
-  const submitFormHandler = (e) => {
-    e.preventDefault();
+  const submitFormHandler = (event: FormEvent) => {
+    event.preventDefault();
 
     if (!formIsValid) {
       return;

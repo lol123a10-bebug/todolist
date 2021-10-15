@@ -1,21 +1,14 @@
-import axios from "axios";
-import { url } from "../../constants/network";
+import { Dispatch } from "redux";
+import { getData, putData } from "../../helpers/network-settings";
 import { todoActions } from "../slices/ToDoSlice";
-import { UIActions } from "../slices/UISlice";
 
-export const getList = () => async (dispatch) => {
-  dispatch(UIActions.setLoading(true));
+export const getList = () => async (dispatch: Dispatch<any>) => {
+  const data = await getData("/todos.json");
 
-  const response = await axios.get(url + "/todos.json");
-  dispatch(todoActions.replaceTodoList(response.data ? response.data : []));
-
-  dispatch(UIActions.setLoading(false));
+  dispatch(todoActions.replaceTodoList(data ? data : []));
 };
 
-export const putList = (list) => async (dispatch) => {
-  dispatch(UIActions.setLoading(true));
-
-  await axios.put(url + "/todos.json", list);
-
-  dispatch(UIActions.setLoading(false));
+export const putList = (list: any[]) => async () => {
+  const data = await putData("/todos.json", list);
+  return data;
 };

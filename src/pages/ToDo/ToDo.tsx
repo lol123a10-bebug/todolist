@@ -5,7 +5,9 @@ import { useAppDispatch, useAppSelector } from "../../hooks/useApp";
 import { UIActions } from "../../store/slices/UISlice";
 
 const ToDo = (props) => {
-  const { todoCreateIsVisible } = useAppSelector((state) => state.ui);
+  const { todoCreateIsVisible, isLoading } = useAppSelector(
+    (state) => state.ui
+  );
   const dispatch = useAppDispatch();
 
   const addTODOButtonHandler = () => {
@@ -23,7 +25,7 @@ const ToDo = (props) => {
         </Button>
       )}
       {todoCreateIsVisible && <CreateToDo />}
-      <ListToDo />
+      {isLoading ? <p>Loading...</p> : <ListToDo />}
     </div>
   );
 };
