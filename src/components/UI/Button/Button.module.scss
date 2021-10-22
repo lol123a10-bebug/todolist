@@ -3,10 +3,13 @@
   border-radius: var(--border-radius);
   background-color: #d1d1d1;
   color: var(--main-color);
-  min-width: 7rem;
+  min-width: 5rem;
   padding: 0.8rem 0;
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  @media (min-width: 40rem) {
+    min-width: 7rem;
+  }
   &:hover {
     background-color: #bbb;
   }

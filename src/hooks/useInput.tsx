@@ -1,9 +1,13 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useEffect, useMemo, useState } from "react";
 
-const useInput = (validationFn = (val) => val, classes: any = []) => {
+const useInput = (
+  validationFn = (val) => val,
+  classes: any = [],
+  initValue: string
+) => {
   const id = useMemo(() => nanoid(), []);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(initValue);
   const [isTouched, setIsTouched] = useState(false);
   const [isValid, setIsValid] = useState(false);
 

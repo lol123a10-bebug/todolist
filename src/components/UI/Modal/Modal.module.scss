@@ -1,0 +1,29 @@
+.Modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+
+  &__children {
+    position: relative;
+    z-index: 99;
+    animation: upDown 0.3s ease forwards;
+  }
+}
+
+@keyframes upDown {
+  from {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
