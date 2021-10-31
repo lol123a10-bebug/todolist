@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { getData, putData } from "../../helpers/network-settings";
+import { getData, putData } from "../../utils/helpers/network-settings";
 import { todoActions } from "../slices/ToDoSlice";
 
 export const getList = () => async (dispatch: Dispatch<any>) => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../../hooks/useApp";
+import { useAppDispatch } from "../../../utils/hooks/useApp";
 import { todoActions } from "../../../store/slices/ToDoSlice";
 import Button from "../../UI/Button/Button";
 import Edit from "../Edit/Edit";
