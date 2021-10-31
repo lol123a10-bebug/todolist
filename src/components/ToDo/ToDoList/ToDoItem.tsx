@@ -4,6 +4,7 @@ import { todoActions } from "../../../store/slices/ToDoSlice";
 import Button from "../../UI/Button/Button";
 import Edit from "../Edit/Edit";
 import classes from "./ToDoItem.module.scss";
+import clsx from "clsx";
 
 const ToDoItem = (props) => {
   const { id, title, description, done } = props;
@@ -12,10 +13,6 @@ const ToDoItem = (props) => {
   const { toggleDoneOfListItem, removeItemFromList, setItem } = todoActions;
 
   const [edit, setEdit] = useState(false);
-
-  const modifiedClassNames = done
-    ? [classes.ToDoItem, classes.done].join(" ")
-    : classes.ToDoItem;
 
   const doneButtonHandler = () => {
     dispatch(toggleDoneOfListItem({ id }));
@@ -45,7 +42,7 @@ const ToDoItem = (props) => {
         />
       )}
 
-      <li className={modifiedClassNames}>
+      <li className={clsx(classes.ToDoItem, { [classes.done]: done })}>
         <div className={classes.ToDoItem__header}>
           <h2>{title}</h2>
           <p>{description}</p>
