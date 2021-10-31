@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Backdrop from "../Backdrop/Backdrop";
 import { createPortal } from "react-dom";
 
-const moveModal = (props) => {
+const Modal = (props) => {
   const { children, style, onBackdropClick } = props;
 
   return createPortal(
@@ -13,10 +13,6 @@ const moveModal = (props) => {
     </div>,
     document.getElementById("root")
   );
-};
-
-const Modal = (props) => {
-  return moveModal(props);
 };
 
 export default Modal;
