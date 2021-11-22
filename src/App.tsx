@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "./hooks/useApp";
+import { useAppDispatch, useAppSelector } from "./utils/hooks/useApp";
 import ToDo from "./pages/ToDo/ToDo";
 import { getList, putList } from "./store/thunks/ToDoThunks";
 

@@ -1,7 +1,7 @@
 import CreateToDo from "../../components/ToDo/ToDoCreate/ToDoCreate";
 import ListToDo from "../../components/ToDo/ToDoList/ToDoList";
 import Button from "../../components/UI/Button/Button";
-import { useAppDispatch, useAppSelector } from "../../hooks/useApp";
+import { useAppDispatch, useAppSelector } from "../../utils/hooks/useApp";
 import { UIActions } from "../../store/slices/UISlice";
 import Loading from "../../components/UI/Loading/Loading";
 

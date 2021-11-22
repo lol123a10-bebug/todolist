@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { FormEvent } from "react";
-import useInput from "../../../hooks/useInput";
+import useInput from "../../../utils/hooks/useInput";
 import Button from "../Button/Button";
 import classes from "./BaseForm.module.scss";
 
