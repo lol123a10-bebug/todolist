@@ -1,7 +1,7 @@
 import axios from "axios";
-import { url } from "../utils/constants/network";
-import store from "../store";
-import { UIActions } from "../store/slices/UISlice";
+import { url } from "../constants/network";
+import store from "../../store";
+import { UIActions } from "../../store/slices/UISlice";
 import { logger } from "./logger";
 
 const { dispatch } = store;
