@@ -1,6 +1,7 @@
-import { useAppSelector } from "../../../utils/hooks/useApp";
 import ToDoItem from "./ToDoItem";
 import styled from "styled-components";
+import { servicesApi } from "../../../services";
+import Loading from "../../UI/Loading/Loading";
 
 const List = styled.ul`
   display: grid;
@@ -25,7 +26,15 @@ const List = styled.ul`
 `;
 
 const ToDoList = (props) => {
-  const { todoList } = useAppSelector((state) => state.todo);
+  const {
+    data: todoList = [],
+    isLoading,
+    error,
+  } = servicesApi.useGetTodosQuery("");
+
+  if (isLoading) return <Loading />;
+
+  if (error) return <div>{error && "Произошла ошибка"}</div>;
 
   return (
     <List length={todoList.length}>

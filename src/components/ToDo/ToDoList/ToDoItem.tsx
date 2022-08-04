@@ -1,28 +1,31 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../../utils/hooks/useApp";
-import { todoActions } from "../../../store/slices/ToDoSlice";
 import Button from "../../UI/Button/Button";
 import Edit from "../Edit/Edit";
 import classes from "./ToDoItem.module.scss";
+import clsx from "clsx";
+import { servicesApi } from "../../../services";
+import { ITodo } from "../../../utils/models/ITodo";
+import Loading from "../../UI/Loading/Loading";
 
 const ToDoItem = (props) => {
   const { id, title, description, done } = props;
+  const todo = {
+    id,
+    title,
+    description,
+    done,
+  };
 
-  const dispatch = useAppDispatch();
-  const { toggleDoneOfListItem, removeItemFromList, setItem } = todoActions;
+  const [updateTodo, { isLoading }] = servicesApi.useUpdateTodoMutation();
 
   const [edit, setEdit] = useState(false);
 
-  const modifiedClassNames = done
-    ? [classes.ToDoItem, classes.done].join(" ")
-    : classes.ToDoItem;
-
   const doneButtonHandler = () => {
-    dispatch(toggleDoneOfListItem({ id }));
+    updateTodo({ ...todo, done: !done });
   };
 
   const removeButtonHandler = () => {
-    dispatch(removeItemFromList({ id }));
+    // dispatch(removeItemFromList({ id }));
   };
 
   const editButtonHandler = () => {
@@ -31,11 +34,12 @@ const ToDoItem = (props) => {
 
   const onEditSubmitHandler = (data) => {
     const { title, description } = data;
-    dispatch(setItem({ id, title, description }));
+    updateTodo({ id, title, description } as ITodo);
   };
 
   return (
     <>
+      {isLoading && <Loading />}
       {edit && (
         <Edit
           title={title}
@@ -45,7 +49,7 @@ const ToDoItem = (props) => {
         />
       )}
 
-      <li className={modifiedClassNames}>
+      <li className={clsx(classes.ToDoItem, { [classes.done]: done })}>
         <div className={classes.ToDoItem__header}>
           <h2>{title}</h2>
           <p>{description}</p>

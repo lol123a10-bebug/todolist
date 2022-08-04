@@ -1,31 +1,25 @@
-import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch } from "../../../utils/hooks/useApp";
-import { todoActions } from "../../../store/slices/ToDoSlice";
 import { UIActions } from "../../../store/slices/UISlice";
 import BaseForm from "../../UI/BaseForm/BaseForm";
 import classes from "./ToDoCreate.module.scss";
+import { servicesApi } from "../../../services";
+import { ITodo } from "../../../utils/models/ITodo";
 
 const ToDoCreate = (props: any) => {
+  const [createTodo, {}] = servicesApi.useCreateTodoMutation();
+
   const dispatch = useAppDispatch();
 
   const { toDoCreateToggle } = UIActions;
-  const { addItemToList } = todoActions;
 
   const cancelTODOAddForm = () => {
     dispatch(toDoCreateToggle());
   };
 
-  const submitFormHandler = (data: any) => {
+  const submitFormHandler = async (data: any) => {
     const { title, description } = data;
 
-    dispatch(
-      addItemToList({
-        id: nanoid(),
-        title: title,
-        description: description,
-        done: false,
-      })
-    );
+    await createTodo({ title, description, done: false } as ITodo);
   };
 
   return (
